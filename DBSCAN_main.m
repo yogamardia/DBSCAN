@@ -131,6 +131,15 @@ function dbscan_btn_Callback(hObject, eventdata, handles)
 % hObject    handle to dbscan_btn (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
+global data;
+global idx;
+
+eps = str2double(get(handles.eps_txt,'String'));
+minpts = str2double(get(handles.minpts_txt, 'String'));
+
+idx=DBSCAN(data',eps,minpts);
+
+
 
 
 % --- Executes on button press in pushbutton3.
