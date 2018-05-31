@@ -29,6 +29,6 @@ function PlotClusteringResult(X, IDX)
     axis equal;
     grid on;
     legend(Legends);
-    legend('Location', 'NorthEastOutside');
+    legend('Location', 'SouthEast');
 
 end
