@@ -73,14 +73,6 @@ function varargout = DBSCAN_main_OutputFcn(hObject, eventdata, handles)
 varargout{1} = handles.output;
 
 
-% --- Executes on button press in plot_btn.
-function plot_btn_Callback(hObject, eventdata, handles)
-% hObject    handle to plot_btn (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-
-
-
 function eps_txt_Callback(hObject, eventdata, handles)
 % hObject    handle to eps_txt (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
@@ -137,7 +129,10 @@ global idx;
 eps = str2double(get(handles.eps_txt,'String'));
 minpts = str2double(get(handles.minpts_txt, 'String'));
 
-idx=DBSCAN(data',eps,minpts);
+idx=DBSCAN(data,eps,minpts);
+
+PlotClusteringResult(data, idx);
+% title(['DBSCAN Clustering (\epsilon = ' num2str(eps) ', MinPts = ' num2str(minpts) ')']);
 
 
 
@@ -157,7 +152,7 @@ function Untitled_1_Callback(hObject, eventdata, handles)
 
 
 % --------------------------------------------------------------------
-function openDataset_menu_Callback(hObject, eventdata, handles)
+function openDataset_menu_Callback(~, ~, handles)
 % hObject    handle to openDataset_menu (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
@@ -172,9 +167,7 @@ function openDataset_menu_Callback(hObject, eventdata, handles)
     else
         return;
     end
-    
-        
-
+            
 % --------------------------------------------------------------------
 function help_menu_Callback(hObject, eventdata, handles)
 % hObject    handle to help_menu (see GCBO)
